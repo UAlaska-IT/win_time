@@ -13,7 +13,7 @@ version '1.0.0'
 
 supports 'windows', '>= 10.0' # Windows 10 or Server 2016, see https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions
 
-chef_version '~> 13.1.0' if respond_to?(:chef_version)
+chef_version '>= 13.1.0' if respond_to?(:chef_version)
 ohai_version '>= 13.1.0' if respond_to?(:ohai_version)
 
-depends 'windows', '~> 3.1.1'
+depends 'windows', '>= 3.1.1'
