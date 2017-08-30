@@ -84,22 +84,24 @@ Development should follow [GitHub Flow](https://guides.github.com/introduction/f
 * Fork/branch the repository
 * Make changes
 * Fix all Rubocop (`rubocop`) and Foodcritic (`foodcritic .`) offenses
-* Write smoke tests for the testing fixture that reasonably cover the changes
+* Write smoke tests that reasonably cover the changes (`kitchen verify`)
 * Pass all smoke tests
 * Submit a Pull Request using Github
 * Wait for feedback and merge from a second developer
 
 ### Requirements
 
-+ [ChefDK](https://downloads.chef.io/chef-dk/)
-+ [Vagrant](https://www.vagrantup.com/)
-+ [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-+ Install dependency tree with `berks install`
-+ Vagrant WinRM plugin:  `vagrant plugin install vagrant-winrm`
+For running tests in Test Kitchen a few dependencies must be installed.
+
+* [ChefDK](https://downloads.chef.io/chef-dk/)
+* [Vagrant](https://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* Install dependency tree with `berks install`
+* Install Vagrant WinRM plugin:  `vagrant plugin install vagrant-winrm`
 
 ### Windows Server 2016 Box
 
-This cookbook was tested using the base box at
+This cookbook was tested in Test Kitchen using the base box at
 
 `\\fbk-tss-store1.apps.ad.alaska.edu\Department\Technology Support Services\Engineering\Packer Boxes\win2016core-virtualbox.box`
 
@@ -111,4 +113,4 @@ or added to Vagrant using the shell command
 
 `vagrant box add <name> <base_box>.box`
 
-Alternative base boxes can be built, for example using [boxcutter](https://github.com/boxcutter/windows).
+Windows boxes are not widely available as standard downloads, but alternative base boxes can be built, for example using [boxcutter](https://github.com/boxcutter/windows).
