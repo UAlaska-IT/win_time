@@ -59,21 +59,21 @@ module WinTime
 
     def ensure_time_server_name(time_server) # rubocop:disable Metrics/MethodLength # Not much can be done here
       powershell_script "set time server #{time_server.server_url}" do
-        code <<-EOH
+        code <<-SCRIPT
           Set-Service w32time -startuptype "manual"
           w32tm /config /manualpeerlist:'#{time_server.server_url}' /syncfromflags:MANUAL /update
           Stop-Service w32time
           Start-Service w32time
-        EOH
+        SCRIPT
         # Query from registry:
         # (Get-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Parameters -Name 'NtpServer')
         # .NtpServer
-        not_if <<-EOH
+        not_if <<-SCRIPT
           $current_server_raw = w32tm /query /source
           $current_server = ($current_server_raw.Split(' ') -replace ',0x.*') | ? {$_.trim() -ne "" }
           $dif = Compare-Object ($current_server) ('#{time_server.server_url}') | Measure
           $dif.count -eq 0
-        EOH
+        SCRIPT
       end
     end
 
