@@ -8,8 +8,6 @@ default_action :set_zone
 
 property :zone_name, String, required: true # Must be a valid Powershell timezone
 
-extend ::WinTime::Helper
-
 action :set_zone do
   set_zone_helper(@new_resource)
 end

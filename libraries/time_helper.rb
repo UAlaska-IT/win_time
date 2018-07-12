@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include Chef::Mixin::PowershellOut
-
+# This module implements helpers that are used for Time resources
 module WinTime
+  include Chef::Mixin::PowershellOut
   # This module implements helpers that are used for Time resources
   module Helper
     def empty_string?(string)
@@ -89,3 +89,6 @@ module WinTime
     end
   end
 end
+
+Chef::Recipe.include(WinTime::Helper)
+Chef::Resource.include(WinTime::Helper)

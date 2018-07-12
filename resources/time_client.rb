@@ -8,8 +8,6 @@ default_action :set_server_name
 
 property :server_url, String, required: true
 
-extend ::WinTime::Helper
-
 action :set_server_name do
   set_server_name_helper(@new_resource)
 end
