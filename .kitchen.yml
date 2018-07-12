@@ -12,12 +12,50 @@ provisioner:
 verifier:
   name: inspec
 
+# Every bento box supported by Chef 14
 platforms:
-  - name: win2016gui-virtualbox
-    driver:
-      customize:
-        memory: 2048
-        cpus: 2
+  - name: ubuntu-18.04
+  - name: ubuntu-16.04
+  - name: ubuntu-16.04-i386
+  - name: ubuntu-14.04
+  - name: ubuntu-14.04-i386
+  - name: ubuntu-12.04
+  - name: ubuntu-12.04-i386
+  - name: debian-9.4
+  - name: debian-9.4-i386
+  - name: debian-8.10
+  - name: debian-8.10-i386
+  - name: debian-7.11
+  - name: debian-7.11-i386
+  - name: centos-7.5
+  - name: centos-6.9
+  - name: centos-6.9-i386
+  - name: centos-5.11
+  - name: centos-5.11-i386
+  - name: oracle-7.5
+  - name: oracle-6.9
+  - name: oracle-6.9-i386
+  - name: oracle-5.11
+  - name: oracle-5.11-i386
+  - name: fedora-28
+  - name: fedora-27
+  - name: fedora-26
+  - name: stakahashi/amazonlinux2
+  - name: realreadme/amazon2016.09
+  - name: opensuse-leap-42.3
+  - name: freebsd-11.1
+  - name: freebsd-11.1-i386
+  - name: freebsd-10.4
+  - name: freebsd-10.4-i386
+  - name: mwrock/Windows2016
+    transport:
+      name: winrm
+  - name: mwrock/Windows2012R2
+    transport:
+      name: winrm
+  - name: salesforce/server2008r2
+    transport:
+      name: winrm
 
 suites:
   - name: default
@@ -27,3 +65,7 @@ suites:
       inspec_tests:
         - test/smoke/default
     attributes:
+    includes:
+      - mwrock/Windows2016
+      - mwrock/Windows2012R2
+      - salesforce/server2008r2
