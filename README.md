@@ -71,7 +71,23 @@ This resource has a two attributes.
 
 ## Recipes
 
-This is a resource-only cookbook; and adding the default recipe to a node's runlist will have no effect.
+### win_time::default
+
+This recipe configures possibly both time client behavior and timezone.
+
+__Attributes__
+
+Several attributes are provided for time.
+
+Time zone attributes:
+m
+* `node['win_time']['set_time_zone']` - Defaults to `true`.  Determines if time zone is set.
+* `node['win_time']['time_zone']` - Defaults to `Alaskan Standard Time`. Valid options are Windows PowerShell time zones.
+
+Time server attributes:
+
+* `node['win_time']['set_time_server']` - Defaults to `true`. Determines if NTP/Win32tm servers are configured.
+* `node['win_time']['time_server_url']` - Defaults to `ntp.alaska.edu`.  The URL of the time server to use for NTP/Win32tm queries.
 
 ## Examples
 
