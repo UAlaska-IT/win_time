@@ -50,7 +50,7 @@ platforms:
   - name: mwrock/Windows2016
     transport:
       name: winrm
-  - name: mwrock/Windows2012R2
+  - name: a-mcf/Win2012R2-WMF5-min
     transport:
       name: winrm
   - name: salesforce/server2008r2
@@ -67,5 +67,5 @@ suites:
     attributes:
     includes:
       - mwrock/Windows2016
-      - mwrock/Windows2012R2
+      - a-mcf/Win2012R2-WMF5-min
       - salesforce/server2008r2
