@@ -64,6 +64,7 @@ One action is provided.
 * `set_zone` - Post condition is that the named time zone is set on the system.
 
 __Attributes__
+
 This resource has a two attributes.
 
 * `name` - The `name_property` of the resource.  Must be unique but otherwise ignored.

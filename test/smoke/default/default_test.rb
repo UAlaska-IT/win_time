@@ -8,14 +8,14 @@ end
 
 # Validate time server url
 describe powershell('w32tm /query /source') do
-  its('exit_status') { should eq 0 }
-  its('stderr') { should eq '' }
-  its('stdout') { should match Regexp.new('ntp.alaska.edu') }
+  its(:exit_status) { should eq 0 }
+  its(:stderr) { should eq '' }
+  its(:stdout) { should match Regexp.new('ntp.alaska.edu') }
 end
 
 # Validate time zone name
 describe powershell('Get-TimeZone | select Id') do
-  its('exit_status') { should eq 0 }
-  its('stderr') { should eq '' }
-  its('stdout') { should match Regexp.new('Alaskan Standard Time') }
+  its(:exit_status) { should eq 0 }
+  its(:stderr) { should eq '' }
+  its(:stdout) { should match Regexp.new('Alaskan Standard Time') }
 end
