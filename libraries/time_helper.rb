@@ -19,6 +19,8 @@ module WinTime
     def log_powershell_out(script_name, script_code)
       Chef::Log.debug("Running #{script_name} script: '#{script_code}'")
       cmd = powershell_out(script_code)
+      raise "Command returned #{cmd.exitstatus}" unless cmd.exitstatus.zero?
+      raise "Command returned #{cmd.stderr}" unless cmd.stderr == ''
       Chef::Log.debug("Returned from #{script_name} script: '#{cmd.stdout}'")
       return cmd
     end
