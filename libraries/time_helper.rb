@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include Chef::Mixin::PowershellOut
-
+# This module implements helpers that are used for Time resources
 module WinTime
+  include Chef::Mixin::PowershellOut
   # This module implements helpers that are used for Time resources
   module Helper
     def empty_string?(string)
@@ -19,6 +19,8 @@ module WinTime
     def log_powershell_out(script_name, script_code)
       Chef::Log.debug("Running #{script_name} script: '#{script_code}'")
       cmd = powershell_out(script_code)
+      raise "Command returned #{cmd.exitstatus}" unless cmd.exitstatus.zero?
+      raise "Command returned #{cmd.stderr}" unless cmd.stderr == ''
       Chef::Log.debug("Returned from #{script_name} script: '#{cmd.stdout}'")
       return cmd
     end
@@ -59,21 +61,21 @@ module WinTime
 
     def ensure_time_server_name(time_server) # rubocop:disable Metrics/MethodLength # Not much can be done here
       powershell_script "set time server #{time_server.server_url}" do
-        code <<-EOH
+        code <<-SCRIPT
           Set-Service w32time -startuptype "manual"
           w32tm /config /manualpeerlist:'#{time_server.server_url}' /syncfromflags:MANUAL /update
           Stop-Service w32time
           Start-Service w32time
-        EOH
+        SCRIPT
         # Query from registry:
         # (Get-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Parameters -Name 'NtpServer')
         # .NtpServer
-        not_if <<-EOH
+        not_if <<-SCRIPT
           $current_server_raw = w32tm /query /source
           $current_server = ($current_server_raw.Split(' ') -replace ',0x.*') | ? {$_.trim() -ne "" }
           $dif = Compare-Object ($current_server) ('#{time_server.server_url}') | Measure
           $dif.count -eq 0
-        EOH
+        SCRIPT
       end
     end
 
@@ -89,3 +91,6 @@ module WinTime
     end
   end
 end
+
+Chef::Recipe.include(WinTime::Helper)
+Chef::Resource.include(WinTime::Helper)

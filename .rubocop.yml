@@ -2,7 +2,7 @@ AccessorMethodName:
   Enabled: false
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.4.1
+  TargetRubyVersion: 2.5.1
 LineLength:
   Max: 120 # Default is 80
 Metrics/BlockLength:

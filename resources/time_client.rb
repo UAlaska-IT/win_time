@@ -6,10 +6,7 @@ provides :time_client, os: 'windows'
 
 default_action :set_server_name
 
-property :name, String, name_property: true
 property :server_url, String, required: true
-
-extend ::WinTime::Helper
 
 action :set_server_name do
   set_server_name_helper(@new_resource)
