@@ -81,7 +81,7 @@ __Attributes__
 Several attributes are provided for time.
 
 Time zone attributes:
-m
+
 * `node['win_time']['set_time_zone']` - Defaults to `true`.  Determines if time zone is set.
 * `node['win_time']['time_zone']` - Defaults to `Alaskan Standard Time`. Valid options are Windows PowerShell time zones.
 
@@ -92,6 +92,8 @@ Time server attributes:
 
 ## Examples
 
+Custom resources can be used as below.
+
 ```ruby
 time_client 'UA Time Server' do
   server_url 'ntp.alaska.edu'
@@ -101,3 +103,7 @@ time_zone 'Alaska Zone' do
   zone_name 'Alaskan Standard Time'
 end
 ```
+
+## Development
+
+See CONTRIBUTING.md and TESTING.md.
