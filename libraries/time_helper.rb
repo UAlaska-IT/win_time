@@ -92,5 +92,6 @@ module WinTime
   end
 end
 
+Chef::Provider.include(WinTime::Helper)
 Chef::Recipe.include(WinTime::Helper)
 Chef::Resource.include(WinTime::Helper)
