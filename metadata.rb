@@ -16,4 +16,5 @@ supports 'windows', '>= 6.1' # Windows Server 2008R2 or 7, see https://en.wikipe
 
 chef_version '>= 13.0' if respond_to?(:chef_version)
 
+depends 'chef_run_recorder' # For testing
 depends 'windows'

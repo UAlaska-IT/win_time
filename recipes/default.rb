@@ -2,6 +2,8 @@
 
 tcb = 'win_time'
 
+include_recipe 'chef_run_recorder::default'
+
 if node[tcb]['set_time_server']
   time_client 'UA Time Server' do
     server_url node[tcb]['time_server_url']

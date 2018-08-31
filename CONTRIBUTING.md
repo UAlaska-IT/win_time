@@ -11,7 +11,7 @@ Test-driven development is encouraged to ensure comprehensive coverage, but at a
 
 * Fork/branch the repository
 * Write InSpec tests (`kitchen test`)
-* For application cookbooks, write ChefSpec tests (`chef exec rspec`) 
+* For application cookbooks, write ChefSpec tests (`chef exec rspec`)
 * Make changes to fix all test errors
 * Fix all Rubocop (`rubocop`) and Foodcritic (`foodcritic .`) offenses
 * Submit a Pull Request on Github
