@@ -1,5 +1,8 @@
 # Windows Time Cookbook
 
+[![License](https://img.shields.io/github/license/ualaska-it/win_time.svg)](https://github.com/ualaska-it/win_time)
+[![GitHub Tag](https://img.shields.io/github/tag/ualaska-it/win_time.svg)](https://github.com/ualaska-it/win_time)
+
 __Maintainer: OIT Systems Engineering__ (<ua-oit-se@alaska.edu>)
 
 ## Purpose
@@ -31,6 +34,10 @@ Notes:
   * Custom resources will not work with previous versions of Powershell
   * Windows 2008 and 2012 require WMF update to install Powershell 5.0
   * Powershell is not installed by this cookbook
+
+### Dependencies
+
+This cookbook does not constrain its dependencies because it is intended as a utility library.  It should ultimately be used within a wrapper cookbook.
 
 ## Resources
 
