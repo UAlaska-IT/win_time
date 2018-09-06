@@ -2,7 +2,8 @@
 
 ## 1.2.0
 
-* Refactor for Supermarket
+* Eliminated default NTP server
+* Organizational changes to increase supermarket quality
 
 ## 1.1.0
 

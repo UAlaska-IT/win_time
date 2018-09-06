@@ -8,4 +8,4 @@ default[tcb]['time_zone'] = 'Alaskan Standard Time'
 
 # Attribute to determine if time servers should be set
 default[tcb]['set_time_server'] = true
-default[tcb]['time_server_url'] = 'ntp.alaska.edu'
+default[tcb]['time_server_url'] = nil

@@ -66,6 +66,8 @@ suites:
       inspec_tests:
         - test/smoke/default
     attributes:
+      win_time:
+        time_server_url: 'ntp.alaska.edu'
     includes:
       - mwrock/Windows2016
       - a-mcf/Win2012R2-WMF5-min
