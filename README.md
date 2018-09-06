@@ -95,7 +95,7 @@ Time zone attributes:
 Time server attributes:
 
 * `node['win_time']['set_time_server']` - Defaults to `true`. Determines if NTP/Win32tm servers are configured.
-* `node['win_time']['time_server_url']` - Defaults to `ntp.alaska.edu`.  The URL of the time server to use for NTP/Win32tm queries.
+* `node['win_time']['time_server_url']` - Defaults to `nil`.  The URL of the time server to use for NTP/Win32tm queries. Must be non-nil for the NTP server to be configured.
 
 ## Examples
 
