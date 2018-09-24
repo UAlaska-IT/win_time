@@ -68,7 +68,7 @@ suites:
       - recipe[win_time::default]
     verifier:
       inspec_tests:
-        - test/smoke/default
+        - test/integration/default
     attributes:
     includes:
       - mwrock/Windows2016
