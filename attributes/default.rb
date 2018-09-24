@@ -3,7 +3,7 @@
 tcb = 'win_time'
 
 # Attribute to determine timezone
-default[tcb]['set_time_zone'] = true
+default[tcb]['configure_time_zone'] = true
 default[tcb]['time_zone'] = 'Alaskan Standard Time'
 
 # Attribute to determine if time servers should be set
