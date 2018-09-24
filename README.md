@@ -89,12 +89,12 @@ Several attributes are provided for time.
 
 Time zone attributes:
 
-* `node['win_time']['set_time_zone']` - Defaults to `true`.  Determines if time zone is set.
+* `node['win_time']['configure_time_zone']` - Defaults to `true`.  Determines if time zone is set.
 * `node['win_time']['time_zone']` - Defaults to `Alaskan Standard Time`. Valid options are Windows PowerShell time zones.
 
 Time server attributes:
 
-* `node['win_time']['set_time_server']` - Defaults to `true`. Determines if NTP/Win32tm servers are configured.
+* `node['win_time']['configure_time_server']` - Defaults to `true`. Determines if NTP/Win32tm servers are configured.
 * `node['win_time']['time_server_url']` - Defaults to `nil`.  The URL of the time server to use for NTP/Win32tm queries. Must be non-nil for the NTP server to be configured.
 
 ## Examples
