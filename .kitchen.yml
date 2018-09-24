@@ -8,6 +8,9 @@ provisioner:
   product_name: chef
   product_version: 14.4.56
   install_strategy: always
+  attributes:
+    win_time:
+      time_server_url: 'ntp.alaska.edu'
 
 verifier:
   name: inspec
@@ -43,6 +46,7 @@ platforms:
   - name: gbailey/amzn2 # 2018.08
   - name: stakahashi/amazonlinux2 # 2017.12
   - name: realreadme/amazon2016.09
+  - name: opensuse-leap-15.0
   - name: opensuse-leap-42.3
   - name: freebsd-11.2
   - name: freebsd-11.2-i386
@@ -66,8 +70,6 @@ suites:
       inspec_tests:
         - test/smoke/default
     attributes:
-      win_time:
-        time_server_url: 'ntp.alaska.edu'
     includes:
       - mwrock/Windows2016
       - a-mcf/Win2012R2-WMF5-min
