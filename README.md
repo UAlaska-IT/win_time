@@ -7,13 +7,13 @@ __Maintainer: OIT Systems Engineering__ (<ua-oit-se@alaska.edu>)
 
 ## Purpose
 
-The custom resources in this cookbook implement the _mechanism_ for configuring the system time in Windows.  For an example of a _policy_ for how to configure time, see the se-win-baseline cookbook.
+The custom resources in this cookbook implement the _mechanism_ for configuring both the time zone and time servers in Windows.  For an example of a _policy_ for how to configure time, see the se-win-baseline cookbook.
 
 ## Requirements
 
 ### Chef
 
-This cookbook requires Chef 13+
+This cookbook requires Chef 14+
 
 ### Platforms
 
