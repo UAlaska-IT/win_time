@@ -1,16 +1,19 @@
 # Windows Time Cookbook
 
+[![License](https://img.shields.io/github/license/ualaska-it/win_time.svg)](https://github.com/ualaska-it/win_time)
+[![GitHub Tag](https://img.shields.io/github/tag/ualaska-it/win_time.svg)](https://github.com/ualaska-it/win_time)
+
 __Maintainer: OIT Systems Engineering__ (<ua-oit-se@alaska.edu>)
 
 ## Purpose
 
-The custom resources in this cookbook implement the _mechanism_ for configuring the system time in Windows.  For an example of a _policy_ for how to configure time, see the se-win-baseline cookbook.
+The custom resources in this cookbook implement the _mechanism_ for configuring both the time zone and time servers in Windows.  For an example of a _policy_ for how to configure time, see the se-win-baseline cookbook.
 
 ## Requirements
 
 ### Chef
 
-This cookbook requires Chef 13+
+This cookbook requires Chef 14+
 
 ### Platforms
 
@@ -31,6 +34,10 @@ Notes:
   * Custom resources will not work with previous versions of Powershell
   * Windows 2008 and 2012 require WMF update to install Powershell 5.0
   * Powershell is not installed by this cookbook
+
+### Dependencies
+
+This cookbook does not constrain its dependencies because it is intended as a utility library.  It should ultimately be used within a wrapper cookbook.
 
 ## Resources
 
@@ -81,16 +88,18 @@ __Attributes__
 Several attributes are provided for time.
 
 Time zone attributes:
-m
-* `node['win_time']['set_time_zone']` - Defaults to `true`.  Determines if time zone is set.
+
+* `node['win_time']['configure_time_zone']` - Defaults to `true`.  Determines if time zone is set.
 * `node['win_time']['time_zone']` - Defaults to `Alaskan Standard Time`. Valid options are Windows PowerShell time zones.
 
 Time server attributes:
 
-* `node['win_time']['set_time_server']` - Defaults to `true`. Determines if NTP/Win32tm servers are configured.
-* `node['win_time']['time_server_url']` - Defaults to `ntp.alaska.edu`.  The URL of the time server to use for NTP/Win32tm queries.
+* `node['win_time']['configure_time_server']` - Defaults to `true`. Determines if NTP/Win32tm servers are configured.
+* `node['win_time']['time_server_url']` - Defaults to `nil`.  The URL of the time server to use for NTP/Win32tm queries. Must be non-nil for the NTP server to be configured.
 
 ## Examples
+
+Custom resources can be used as below.
 
 ```ruby
 time_client 'UA Time Server' do
@@ -104,22 +113,4 @@ end
 
 ## Development
 
-Development should follow [GitHub Flow](https://guides.github.com/introduction/flow/) to foster some shared responsibility.
-
-* Fork/branch the repository
-* Make changes
-* Fix all Rubocop (`rubocop`) and Foodcritic (`foodcritic .`) offenses
-* Write smoke tests that reasonably cover the changes (`kitchen verify`)
-* Pass all smoke tests
-* Submit a Pull Request using Github
-* Wait for feedback and merge from a second developer
-
-### Requirements
-
-For running tests in Test Kitchen a few dependencies must be installed.
-
-* [ChefDK](https://downloads.chef.io/chef-dk/)
-* [Vagrant](https://www.vagrantup.com/)
-* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-* Install the dependency tree with `berks install`
-* Install the Vagrant WinRM plugin:  `vagrant plugin install vagrant-winrm`
+See CONTRIBUTING.md and TESTING.md.

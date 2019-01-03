@@ -6,8 +6,11 @@ provisioner:
   name: chef_zero
   always_update_cookbooks: true
   product_name: chef
-  product_version: 14.2.0
+  product_version: 14.7.17
   install_strategy: always
+  attributes:
+    win_time:
+      time_server_url: 'ntp.alaska.edu'
 
 verifier:
   name: inspec
@@ -21,30 +24,32 @@ platforms:
   - name: ubuntu-14.04-i386
   - name: ubuntu-12.04
   - name: ubuntu-12.04-i386
-  - name: debian-9.4
-  - name: debian-9.4-i386
-  - name: debian-8.10
+  - name: debian-9.5
+  - name: debian-9.5-i386
+  - name: debian-8.11
   - name: debian-8.10-i386
   - name: debian-7.11
   - name: debian-7.11-i386
   - name: centos-7.5
-  - name: centos-6.9
-  - name: centos-6.9-i386
+  - name: centos-6.10
+  - name: centos-6.10-i386
   - name: centos-5.11
   - name: centos-5.11-i386
   - name: oracle-7.5
-  - name: oracle-6.9
-  - name: oracle-6.9-i386
+  - name: oracle-6.10
+  - name: oracle-6.10-i386
   - name: oracle-5.11
   - name: oracle-5.11-i386
   - name: fedora-28
   - name: fedora-27
   - name: fedora-26
-  - name: stakahashi/amazonlinux2
+  - name: gbailey/amzn2 # 2018.08
+  - name: stakahashi/amazonlinux2 # 2017.12
   - name: realreadme/amazon2016.09
+  - name: opensuse-leap-15.0
   - name: opensuse-leap-42.3
-  - name: freebsd-11.1
-  - name: freebsd-11.1-i386
+  - name: freebsd-11.2
+  - name: freebsd-11.2-i386
   - name: freebsd-10.4
   - name: freebsd-10.4-i386
   - name: mwrock/Windows2016
@@ -63,7 +68,7 @@ suites:
       - recipe[win_time::default]
     verifier:
       inspec_tests:
-        - test/smoke/default
+        - test/integration/default
     attributes:
     includes:
       - mwrock/Windows2016
